@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         mHomeRecycleView = (RecyclerView) findViewById(R.id.recycler_view_home);
         Api.createApiService().onRecviceChoice2Api(1).enqueue(new Callback<Response>() {
             @Override
