@@ -1,6 +1,7 @@
 package me.racofix.eyes;
 
 import com.android.core.MainApp;
+import com.android.core.control.logcat.Logcat;
 import com.android.core.model.LogicProxy;
 
 import me.racofix.eyes.logic.MainLogicI;
@@ -14,5 +15,8 @@ public class BaseApp extends MainApp {
     public void onCreate() {
         super.onCreate();
         LogicProxy.getInstance().init(MainLogicI.class);
+
+        if (BuildConfig.DEBUG)
+            Logcat.init(getPackageName()).hideThreadInfo().methodCount(3);
     }
 }

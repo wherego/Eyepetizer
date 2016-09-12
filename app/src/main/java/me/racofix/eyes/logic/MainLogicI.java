@@ -7,4 +7,6 @@ import com.android.core.model.annotation.Implement;
  */
 @Implement(MainLogicIpml.class)
 public interface MainLogicI {
+
+    void onRecviceHomeData2Api(int num);
 }
