@@ -1,6 +1,7 @@
 package me.racofix.eyes.api;
 
-import com.android.core.api.HttpClient;
+import com.android.core.api.RestApi;
+import me.racofix.eyes.BuildConfig;
 
 /**
  * Created by zjl on 16-9-12.
@@ -8,7 +9,7 @@ import com.android.core.api.HttpClient;
 public class Api {
 
     // create service single
-    public static ApiService createApiService() {
-        return HttpClient.getIns(Constant.API_BASE_URL).createService(ApiService.class);
+    public static ApiService createApi() {
+        return RestApi.getIns().createService( BuildConfig.DEBUG, ApiService.class);
     }
 }

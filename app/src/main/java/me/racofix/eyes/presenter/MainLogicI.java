@@ -1,6 +1,6 @@
-package me.racofix.eyes.logic;
+package me.racofix.eyes.presenter;
 
-import com.android.core.model.annotation.Implement;
+import com.android.core.presenter.annotation.Implement;
 
 /**
  * Created by zjl on 16-9-12.

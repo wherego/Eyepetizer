@@ -4,6 +4,50 @@ package me.racofix.eyes.api;
  * Created by zjl on 16-9-12.
  */
 public class Constant {
+
+
+//    首页:
+//    http://baobab.wandoujia.com/api/v3/tabs/selected?
+//    udid=3aab4c0bab4d49f4ba4ebc3399f1a5493a38f77b&vc=126&vn=2.4.1&
+//    deviceModel=Nexus%205&first_channel=eyepetizer_wandoujia_market&
+//    last_channel=eyepetizer_wandoujia_market&system_version_code=21
+//
+//    首页：
+//    http://baobab.wandoujia.com/api/v2/feed?num=1&udid=3aab4c0bab4d49f4ba4ebc3399f1a5493a38f77b&vc=126&vn=2.4.1&deviceModel=Nexus%
+//            205&first_channel=eyepetizer_wandoujia_market&last_channel=eyepetizer_wandoujia_market&system_version_code=21
+//
+//
+//    作者：
+//    http://baobab.wandoujia.com/api/v3/tabs/pgcs?
+//    udid=3aab4c0bab4d49f4ba4ebc3399f1a5493a38f77b&vc=126&
+//    vn=2.4.1&deviceModel=Nexus%205&first_channel=eyepetizer_wandoujia_market&last_channel=eyepetizer_wandoujia_market&system_version_code=21
+//
+//
+//    发现：
+//    http://baobab.wandoujia.com/api/v3/discovery?udid=3aab4c0bab4d49f4ba4ebc3399f1a5493a38f77b&vc=126&vn=2.4.1&deviceModel=Nexus%205
+//            &first_channel=eyepetizer_wandoujia_market&last_channel=eyepetizer_wandoujia_market&system_version_code=21
+//
+//
+//    我的消息：
+//    http://baobab.wandoujia.com/api/v3/messages?udid=3aab4c0bab4d49f4ba4ebc3399f1a5493a38f77b&vc=126&vn=2.4.1&deviceModel=Nexus
+//            %205&first_channel=eyepetizer_wandoujia_market&last_channel=eyepetizer_wandoujia_market&system_version_code=21
+//
+//
+//    搜索分类：
+//    http://baobab.wandoujia.com/api/v3/queries/hot?udid=3aab4c0bab4d49f4ba4ebc3399f1a5493a38f77b&vc=126&vn=2.4.1
+//            &deviceModel=Nexus%205&first_channel=eyepetizer_wandoujia_market&last_channel=eyepetizer_wandoujia_market&system_version_code=21
+//
+//
+//    搜索结果
+//    http://baobab.wandoujia.com/api/v1/search?query=666&udid=3aab4c0bab4d49f4ba4ebc3399f1a5493a38f77b&vc=126&vn=2.4.1&deviceModel=Nexus
+//            %205&first_channel=eyepetizer_wandoujia_market&last_channel=eyepetizer_wandoujia_market&system_version_code=21
+//
+//
+//    详情：
+//    http://www.wandoujia.com/eyepetizer/article.html?nid=973&shareable=true
+
+//---------------------------------------------------------------------------------------------------
+
     static final String API_BASE_URL = "http://baobab.wandoujia.com/api/";
 
     //视频流API
