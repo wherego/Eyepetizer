@@ -1,6 +1,7 @@
 package me.racofix.eyes.api;
 
 
+import me.racofix.eyes.model.HomeRepo;
 import retrofit2.Response;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -20,6 +21,6 @@ public interface ApiService {
 
     // 每日精选
     @GET("v3/tabs/selected")
-    Observable<Response> onHomeDataStore2Api();
+    Observable<HomeRepo> onHomeDataStore2Api();
 
 }
