@@ -1,7 +1,7 @@
-package me.racofix.eyes.api;
+package me.racofix.open.api;
 
 import com.android.core.api.RestApi;
-import me.racofix.eyes.BuildConfig;
+import me.racofix.open.BuildConfig;
 
 /**
  * Created by zjl on 16-9-12.

@@ -1,4 +1,4 @@
-package me.racofix.eyes.presenter;
+package me.racofix.open.presenter;
 
 import com.android.core.base.BasePresenter;
 

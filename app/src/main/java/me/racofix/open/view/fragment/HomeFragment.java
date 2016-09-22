@@ -1,8 +1,7 @@
-package me.racofix.eyes.view.fragment;
+package me.racofix.open.view.fragment;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,10 +20,10 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import me.racofix.eyes.R;
-import me.racofix.eyes.model.HomeRepo;
-import me.racofix.eyes.presenter.HomeLogicI;
-import me.racofix.eyes.presenter.HomeLogicImpl;
+import me.racofix.open.R;
+import me.racofix.open.model.HomeRepo;
+import me.racofix.open.presenter.HomeLogicI;
+import me.racofix.open.presenter.HomeLogicImpl;
 
 /**
  * Author: 码农小阿新

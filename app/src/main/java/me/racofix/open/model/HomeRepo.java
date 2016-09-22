@@ -1,4 +1,4 @@
-package me.racofix.eyes.model;
+package me.racofix.open.model;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package me.racofix.eyes;
+package me.racofix.open;
 
 import org.junit.Test;
 

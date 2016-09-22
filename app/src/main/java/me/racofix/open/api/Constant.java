@@ -1,4 +1,4 @@
-package me.racofix.eyes.api;
+package me.racofix.open.api;
 
 /**
  * Created by zjl on 16-9-12.

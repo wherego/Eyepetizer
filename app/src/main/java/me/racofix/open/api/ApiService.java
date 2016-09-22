@@ -1,10 +1,8 @@
-package me.racofix.eyes.api;
+package me.racofix.open.api;
 
 
-import me.racofix.eyes.model.HomeRepo;
-import retrofit2.Response;
+import me.racofix.open.model.HomeRepo;
 import retrofit2.http.GET;
-import retrofit2.http.Query;
 import rx.Observable;
 
 /**

@@ -1,12 +1,14 @@
-package me.racofix.eyes.view;
+package me.racofix.open.view;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.android.core.widget.TabStripView;
 
-import me.racofix.eyes.R;
-import me.racofix.eyes.view.fragment.HomeFragment;
+import me.racofix.open.R;
+import me.racofix.open.view.fragment.HomeFragment;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,5 +42,11 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
         //保存当前选中的选项状态
         navigateTabBar.onSaveInstanceState(outState);
+    }
+
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

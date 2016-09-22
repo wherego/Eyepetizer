@@ -1,14 +1,11 @@
-package me.racofix.eyes.presenter;
+package me.racofix.open.presenter;
 
-import com.android.core.api.TransformUtils;
 import com.android.core.base.rx.ApiCallback;
-import com.android.core.base.rx.RxSubscriber;
 import com.android.core.base.rx.SubscriberCallBack;
 import com.android.core.presenter.DataLayerLogicImpl;
 
-import me.racofix.eyes.api.Api;
-import me.racofix.eyes.model.HomeRepo;
-import rx.Subscription;
+import me.racofix.open.api.Api;
+import me.racofix.open.model.HomeRepo;
 
 /**
  * Author: 码农小阿新
