@@ -24,16 +24,20 @@ public class MainActivity extends AppCompatActivity {
         navigateTabBar.onRestoreInstanceState(savedInstanceState);
 
         navigateTabBar.addTab(HomeFragment.class,
-                new TabStripView.TabParam(R.drawable.ic_tab_bar_home,
-                        R.drawable.ic_tab_bar_home_active, R.string.tab_bar_text_home));
+                new TabStripView.TabParam(R.drawable.ic_tab_strip_icon_feed,
+                        R.drawable.ic_tab_strip_icon_feed_selected, R.string.tab_bar_text_feed));
 
         navigateTabBar.addTab(HomeFragment.class,
-                new TabStripView.TabParam(R.drawable.ic_tab_bar_discover,
-                        R.drawable.ic_tab_bar_discover_active, R.string.tab_bar_text_discover));
+                new TabStripView.TabParam(R.drawable.ic_tab_strip_icon_category,
+                        R.drawable.ic_tab_strip_icon_category_selected, R.string.tab_bar_text_category));
 
         navigateTabBar.addTab(HomeFragment.class,
-                new TabStripView.TabParam(R.drawable.ic_tab_bar_home,
-                        R.drawable.ic_tab_bar_home_active, R.string.tab_bar_text_me));
+                new TabStripView.TabParam(R.drawable.ic_tab_strip_icon_pgc,
+                        R.drawable.ic_tab_strip_icon_pgc_selected, R.string.tab_bar_text_pgc));
+
+        navigateTabBar.addTab(HomeFragment.class,
+                new TabStripView.TabParam(R.drawable.ic_tab_strip_icon_profile,
+                        R.drawable.ic_tab_strip_icon_profile_selected, R.string.tab_bar_text_profile));
     }
 
 

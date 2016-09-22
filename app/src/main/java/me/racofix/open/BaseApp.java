@@ -21,10 +21,10 @@ public class BaseApp extends MainApp {
         if (BuildConfig.DEBUG)
             Logcat.init(getPackageName()).hideThreadInfo().methodCount(3);
 
-        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/Nunito-Bold.ttf")
-                .setFontAttrId(R.attr.fontPath)
-                .build()
-        );
+//        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+//                .setDefaultFontPath("fonts/Nunito-Bold.ttf")
+//                .setFontAttrId(R.attr.fontPath)
+//                .build()
+//        );
     }
 }

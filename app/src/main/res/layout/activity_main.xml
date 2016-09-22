@@ -10,6 +10,13 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/navigateTabBar" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:paddingBottom="@dimen/tab_bar_height"
+        android:background="#dedede"/>
+
     <com.android.core.widget.TabStripView
         android:id="@+id/navigateTabBar"
         android:layout_width="match_parent"
@@ -18,6 +25,6 @@
         app:containerId="@id/main_container"
         app:navigateTabSelectedTextColor="@color/text_tab_active"
         app:navigateTabTextColor="@color/text_tab_normal"
-        app:navigateTabTextSize="11sp" />
+        app:navigateTabTextSize="10sp" />
 
 </RelativeLayout>
