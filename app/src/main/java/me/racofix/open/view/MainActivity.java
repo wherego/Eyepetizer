@@ -1,6 +1,8 @@
 package me.racofix.open.view;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
@@ -11,6 +13,12 @@ import me.racofix.open.view.fragment.HomeFragment;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static void jumpTo(Activity target){
+        Intent intent = new Intent(target, MainActivity.class);
+        target.startActivity(intent);
+        target.finish();
+    }
 
     private TabStripView navigateTabBar;
 
