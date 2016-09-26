@@ -7,7 +7,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 /**
  * Created by world on 2016-09-22.
  */
-public abstract class BaseActivity extends com.android.core.base.BaseActivity {
+public abstract class IBaseActivity extends com.android.core.base.BaseActivity {
 
     @Override
     protected void attachBaseContext(Context newBase) {
