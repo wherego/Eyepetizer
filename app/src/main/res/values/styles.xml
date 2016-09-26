@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="TextViewStyle">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="fontPath">fonts/Lobster-1.4.otf</item>
+    </style>
+
 </resources>

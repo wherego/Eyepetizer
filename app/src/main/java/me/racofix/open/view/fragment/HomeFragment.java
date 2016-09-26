@@ -21,7 +21,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import me.racofix.open.R;
-import me.racofix.open.model.HomeRepo;
+import me.racofix.open.model.SelectedRepo;
 import me.racofix.open.presenter.HomeLogicI;
 import me.racofix.open.presenter.HomeLogicImpl;
 
@@ -30,11 +30,11 @@ import me.racofix.open.presenter.HomeLogicImpl;
  * Date: 2016/9/18
  * Github: https://github.com/racofix
  */
-public class HomeFragment extends BaseFragment implements RxView<HomeRepo> {
+public class HomeFragment extends BaseFragment implements RxView<SelectedRepo> {
 
     @Bind(R.id.recycler_view_home)
     XRecyclerView mRecylerView;
-    private List<HomeRepo.SectionListBean.ItemListBean> home_list = new ArrayList();
+    private List<SelectedRepo.SectionListBean.ItemListBean> home_list = new ArrayList();
     private RecyclerAdapter adapter;
 
     @Override
@@ -47,11 +47,26 @@ public class HomeFragment extends BaseFragment implements RxView<HomeRepo> {
         mPresenter = getLogicImpl(HomeLogicI.class, this);
         ((HomeLogicImpl) mPresenter).onHomeDataLayer2Api();
 
-        adapter = new RecyclerAdapter<HomeRepo.SectionListBean.ItemListBean>(getActivity(), R.layout.item_content_home, home_list) {
+        adapter = new RecyclerAdapter<SelectedRepo.SectionListBean.ItemListBean>(getActivity(), R.layout.item_content_home, home_list) {
             @Override
-            public void convert(RecyclerViewHolder holder, HomeRepo.SectionListBean.ItemListBean repo) {
+            public void convert(RecyclerViewHolder holder, SelectedRepo.SectionListBean.ItemListBean repo) {
                 holder.setText(R.id.tv_home_title, repo.getData().getTitle());
-
+                int duration = repo.getData().getDuration();
+                int mm = duration / 60;//分
+                int ss = duration % 60;//秒
+                String second = "";//秒
+                String minute = "";//分
+                if (ss < 10) {
+                    second = "0" + String.valueOf(ss);
+                } else {
+                    second = String.valueOf(ss);
+                }
+                if (mm < 10) {
+                    minute = "0" + String.valueOf(mm);
+                } else {
+                    minute = String.valueOf(mm);//分钟
+                }
+                holder.setText(R.id.tv_category, "#"+repo.getData().getCategory()+"  /  "  + minute + "' " + second + '"');
                 ImageLoaderUtil.getInstance().loadImage(getActivity(), new ImageLoader.Builder()
                         .url(repo.getData().getCover().getDetail())
                         .imgView((ImageView) holder.getView(R.id.iv_home_img))
@@ -64,8 +79,8 @@ public class HomeFragment extends BaseFragment implements RxView<HomeRepo> {
     }
 
     @Override
-    public void onReceiveData2Api(HomeRepo repo, boolean b) {
-        List<HomeRepo.SectionListBean.ItemListBean> sectionList = repo.getSectionList().get(0).getItemList();
+    public void onReceiveData2Api(SelectedRepo repo, boolean b) {
+        List<SelectedRepo.SectionListBean.ItemListBean> sectionList = repo.getSectionList().get(0).getItemList();
         home_list.addAll(sectionList);
         adapter.notifyDataSetChanged();
     }

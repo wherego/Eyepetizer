@@ -1,7 +1,7 @@
 package me.racofix.open.api;
 
 
-import me.racofix.open.model.HomeRepo;
+import me.racofix.open.model.SelectedRepo;
 import retrofit2.http.GET;
 import rx.Observable;
 
@@ -19,6 +19,6 @@ public interface ApiService {
 
     // 每日精选
     @GET("v3/tabs/selected")
-    Observable<HomeRepo> onHomeDataStore2Api();
+    Observable<SelectedRepo> onHomeDataStore2Api();
 
 }
