@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide;
 
 import butterknife.Bind;
 import me.racofix.open.R;
-import me.racofix.open.view.BaseActivity;
+import me.racofix.open.view.IBaseActivity;
 import me.racofix.open.view.MainActivity;
 
 /**
@@ -16,7 +16,8 @@ import me.racofix.open.view.MainActivity;
  * Date: 2016/9/23
  * Github: https://github.com/racofix
  */
-public class SplashActivity extends BaseActivity {
+public class SplashActivity extends IBaseActivity {
+
     @Bind(R.id.splash_image_view) ImageView mSplashView;
 
     @Override

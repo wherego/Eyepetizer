@@ -9,12 +9,13 @@ import android.support.v7.app.AppCompatActivity;
 import com.android.core.widget.TabStripView;
 
 import me.racofix.open.R;
+import me.racofix.open.view.fragment.CategoryFragment;
 import me.racofix.open.view.fragment.HomeFragment;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static void jumpTo(Activity target){
+    public static void jumpTo(Activity target) {
         Intent intent = new Intent(target, MainActivity.class);
         target.startActivity(intent);
         target.finish();
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 new TabStripView.TabParam(R.drawable.ic_tab_strip_icon_feed,
                         R.drawable.ic_tab_strip_icon_feed_selected, R.string.tab_bar_text_feed));
 
-        navigateTabBar.addTab(HomeFragment.class,
+        navigateTabBar.addTab(CategoryFragment.class,
                 new TabStripView.TabParam(R.drawable.ic_tab_strip_icon_category,
                         R.drawable.ic_tab_strip_icon_category_selected, R.string.tab_bar_text_category));
 
