@@ -21,7 +21,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import me.racofix.open.R;
-import me.racofix.open.model.HomeRepo;
+import me.racofix.open.model.Home;
 import me.racofix.open.presenter.HomeLogicI;
 import me.racofix.open.presenter.HomeLogicImpl;
 
@@ -30,11 +30,11 @@ import me.racofix.open.presenter.HomeLogicImpl;
  * Date: 2016/9/18
  * Github: https://github.com/racofix
  */
-public class HomeFragment extends BaseFragment implements RxView<HomeRepo> {
+public class HomeFragment extends BaseFragment implements RxView<Home> {
 
     @Bind(R.id.recycler_view_home)
     XRecyclerView mRecylerView;
-    private List<HomeRepo.SectionListBean.ItemListBean> home_list = new ArrayList();
+    private List<Home.SectionListBean.ItemListBean> home_list = new ArrayList();
     private RecyclerAdapter adapter;
 
     @Override
@@ -47,9 +47,9 @@ public class HomeFragment extends BaseFragment implements RxView<HomeRepo> {
         mPresenter = getLogicImpl(HomeLogicI.class, this);
         ((HomeLogicImpl) mPresenter).onHomeDataLayer2Api();
 
-        adapter = new RecyclerAdapter<HomeRepo.SectionListBean.ItemListBean>(getActivity(), R.layout.item_content_home, home_list) {
+        adapter = new RecyclerAdapter<Home.SectionListBean.ItemListBean>(getActivity(), R.layout.item_content_home, home_list) {
             @Override
-            public void convert(RecyclerViewHolder holder, HomeRepo.SectionListBean.ItemListBean repo) {
+            public void convert(RecyclerViewHolder holder, Home.SectionListBean.ItemListBean repo) {
                 holder.setText(R.id.tv_home_title, repo.getData().getTitle());
 
                 ImageLoaderUtil.getInstance().loadImage(getActivity(), new ImageLoader.Builder()
@@ -64,8 +64,8 @@ public class HomeFragment extends BaseFragment implements RxView<HomeRepo> {
     }
 
     @Override
-    public void onReceiveData2Api(HomeRepo repo, boolean b) {
-        List<HomeRepo.SectionListBean.ItemListBean> sectionList = repo.getSectionList().get(0).getItemList();
+    public void onReceiveData2Api(Home repo, boolean b) {
+        List<Home.SectionListBean.ItemListBean> sectionList = repo.getSectionList().get(0).getItemList();
         home_list.addAll(sectionList);
         adapter.notifyDataSetChanged();
     }

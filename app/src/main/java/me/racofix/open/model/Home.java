@@ -7,7 +7,7 @@ import java.util.List;
  * Date: 2016/9/18
  * Github: https://github.com/racofix
  */
-public class HomeRepo {
+public class Home {
 
     private long date;
     private long nextPublishTime;
