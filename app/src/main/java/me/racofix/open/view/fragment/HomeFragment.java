@@ -22,6 +22,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import me.racofix.open.R;
 import me.racofix.open.model.Home;
+import me.racofix.open.model.SelectedRepo;
 import me.racofix.open.presenter.HomeLogicI;
 import me.racofix.open.presenter.HomeLogicImpl;
 
@@ -51,7 +52,22 @@ public class HomeFragment extends BaseFragment implements RxView<Home> {
             @Override
             public void convert(RecyclerViewHolder holder, Home.SectionListBean.ItemListBean repo) {
                 holder.setText(R.id.tv_home_title, repo.getData().getTitle());
-
+                int duration = repo.getData().getDuration();
+                int mm = duration / 60;//分
+                int ss = duration % 60;//秒
+                String second = "";//秒
+                String minute = "";//分
+                if (ss < 10) {
+                    second = "0" + String.valueOf(ss);
+                } else {
+                    second = String.valueOf(ss);
+                }
+                if (mm < 10) {
+                    minute = "0" + String.valueOf(mm);
+                } else {
+                    minute = String.valueOf(mm);//分钟
+                }
+                holder.setText(R.id.tv_category, "#"+repo.getData().getCategory()+"  /  "  + minute + "' " + second + '"');
                 ImageLoaderUtil.getInstance().loadImage(getActivity(), new ImageLoader.Builder()
                         .url(repo.getData().getCover().getDetail())
                         .imgView((ImageView) holder.getView(R.id.iv_home_img))

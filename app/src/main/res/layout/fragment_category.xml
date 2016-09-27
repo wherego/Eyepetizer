@@ -4,6 +4,11 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
+    <me.racofix.open.view.widget.AppBar
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/abc_white"/>
+    
     <com.jcodecraeer.xrecyclerview.XRecyclerView
         android:id="@+id/category_recyler_view"
         android:layout_width="match_parent"

@@ -6,6 +6,7 @@ import com.android.core.presenter.LogicProxy;
 
 import me.racofix.open.presenter.DiscoveryLogicI;
 import me.racofix.open.presenter.HomeLogicI;
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 /**
  * Created by zjl on 16-9-12.
@@ -23,10 +24,10 @@ public class BaseApp extends MainApp {
         if (BuildConfig.DEBUG)
             Logcat.init(getPackageName()).hideThreadInfo().methodCount(3);
 
-//        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-//                .setDefaultFontPath("fonts/Nunito-Bold.ttf")
-//                .setFontAttrId(R.attr.fontPath)
-//                .build()
-//        );
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                .setDefaultFontPath("fonts/FZSongKeBenXiuKaiS-R-GB.TTF")
+                .setFontAttrId(R.attr.fontPath)
+                .build()
+        );
     }
 }

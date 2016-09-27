@@ -1,9 +1,9 @@
 package me.racofix.open.api;
 
+import retrofit2.http.GET;
 
 import me.racofix.open.model.Discovery;
 import me.racofix.open.model.Home;
-import retrofit2.http.GET;
 import rx.Observable;
 
 /**
@@ -20,5 +20,6 @@ public interface ApiService {
     // 发现
     @GET("v3/discovery")
     Observable<Discovery> onCategoryData2Api();
+
 
 }
