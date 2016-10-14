@@ -79,6 +79,7 @@ public class HomeFragment extends BaseFragment implements HomeLogicI.HomeView {
 
     @Override
     public void success(Home body) {
+        List<Home.SectionListBean> list1 = body.getSectionList();
         List<Home.SectionListBean.ItemListBean> list = body.getSectionList().get(0).getItemList();
         home_list.addAll(list);
         adapter.notifyDataSetChanged();

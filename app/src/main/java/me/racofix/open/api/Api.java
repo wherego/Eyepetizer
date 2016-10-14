@@ -10,6 +10,6 @@ public class Api {
 
     // create service single
     public static ApiService createApi() {
-        return RestApi.getIns().createService( BuildConfig.DEBUG, ApiService.class);
+        return RestApi.getIns().createService(BuildConfig.DEBUG, ApiService.class);
     }
 }
