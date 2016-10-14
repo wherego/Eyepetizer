@@ -1,14 +1,15 @@
 package me.racofix.open.view.activity;
 
+import android.os.Bundle;
+import android.os.Handler;
 import android.widget.ImageView;
 
-import com.android.core.control.HandlerTip;
-import com.android.core.control.StatusBarUtil;
 import com.bumptech.glide.Glide;
 
 import butterknife.Bind;
 import me.racofix.open.R;
-import me.racofix.open.view.IBaseActivity;
+import me.racofix.open.utils.StatusBarUtil;
+import me.racofix.open.view.AbsBaseActivity;
 import me.racofix.open.view.MainActivity;
 
 /**
@@ -16,9 +17,11 @@ import me.racofix.open.view.MainActivity;
  * Date: 2016/9/23
  * Github: https://github.com/racofix
  */
-public class SplashActivity extends IBaseActivity {
+public class SplashActivity extends AbsBaseActivity {
 
-    @Bind(R.id.splash_image_view) ImageView mSplashView;
+    private int mLoadTime = 2000;
+    @Bind(R.id.iv_splash_background)
+    ImageView mImageView;
 
     @Override
     protected int getLayoutResource() {
@@ -26,9 +29,14 @@ public class SplashActivity extends IBaseActivity {
     }
 
     @Override
-    protected void onInitView() {
+    protected void onInitView(Bundle savedInstanceState) {
         StatusBarUtil.setTranslucentBackground(this);
         sacleLargenView();
+    }
+
+    @Override
+    protected Class getLogic() {
+        return null;
     }
 
     private void sacleLargenView() {
@@ -36,14 +44,16 @@ public class SplashActivity extends IBaseActivity {
                 .load(R.drawable.landing_background)
                 .centerCrop()
                 .animate(R.anim.sacle_largen_view)
-                .into(mSplashView);
+                .into(mImageView);
 
-        HandlerTip.getInstance().postDelayed(
-                2000, new HandlerTip.HandlerCallback() {
-                    @Override
-                    public void postDelayed() {
-                        MainActivity.jumpTo(SplashActivity.this);
-                    }
-                });
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                MainActivity.jumpTo(SplashActivity.this);
+            }
+        }, mLoadTime);
     }
+
 }
+
+

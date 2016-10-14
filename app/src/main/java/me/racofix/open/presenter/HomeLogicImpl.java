@@ -1,11 +1,12 @@
 package me.racofix.open.presenter;
 
-import com.android.core.base.rx.ApiCallback;
-import com.android.core.base.rx.SubscriberCallBack;
-import com.android.core.presenter.DataLayerLogicImpl;
+import com.android.core.base.BasePresenter;
 
 import me.racofix.open.api.Api;
 import me.racofix.open.model.Home;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 /**
@@ -13,27 +14,20 @@ import me.racofix.open.model.Home;
  * Date: 2016/9/18
  * Github: https://github.com/racofix
  */
-public class HomeLogicImpl extends DataLayerLogicImpl<Home> implements HomeLogicI {
-
+public class HomeLogicImpl extends BasePresenter<HomeLogicI.HomeView> implements HomeLogicI {
 
     @Override
     public void onHomeDataLayer2Api() {
-        addSubscription(Api.createApi().onHomeDataStore2Api(), new SubscriberCallBack<>(new ApiCallback<Home>() {
+        Api.createApi().onHomeDataStore2Api().enqueue(new Callback<Home>() {
             @Override
-            public void onSuccess(Home repo) {
-                onDataStore2View(repo);
+            public void onResponse(Call<Home> call, Response<Home> response) {
+                getView().success(response.body());
             }
 
             @Override
-            public void onFailure(int i, String s) {
-                getView().showErrorMessage(s, s);
-            }
+            public void onFailure(Call<Home> call, Throwable t) {
 
-            @Override
-            public void onCompleted() {
-                getView().hideProgress();
             }
-        }));
-
+        });
     }
 }

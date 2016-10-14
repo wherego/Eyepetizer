@@ -1,12 +1,11 @@
 package me.racofix.open.presenter;
 
-import com.android.core.presenter.annotation.Implement;
+import com.android.core.model.annotation.Implement;
 
 /**
  * Created by zjl on 16-9-12.
  */
 @Implement(MainLogicIpml.class)
-public interface MainLogicI {
-
+interface MainLogicI {
     void onRecviceHomeData2Api(int num);
 }

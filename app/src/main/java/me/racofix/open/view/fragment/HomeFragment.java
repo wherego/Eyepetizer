@@ -2,27 +2,21 @@ package me.racofix.open.view.fragment;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.android.core.adapter.RecyclerAdapter;
 import com.android.core.adapter.RecyclerViewHolder;
 import com.android.core.base.BaseFragment;
-import com.android.core.base.rx.RxView;
-import com.android.core.widget.glide.ImageLoader;
-import com.android.core.widget.glide.ImageLoaderUtil;
+import com.android.core.manage.image.ImageLoadTool;
+import com.android.core.manage.image.ImageLoader;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import me.racofix.open.R;
 import me.racofix.open.model.Home;
-import me.racofix.open.model.SelectedRepo;
 import me.racofix.open.presenter.HomeLogicI;
 import me.racofix.open.presenter.HomeLogicImpl;
 
@@ -31,9 +25,9 @@ import me.racofix.open.presenter.HomeLogicImpl;
  * Date: 2016/9/18
  * Github: https://github.com/racofix
  */
-public class HomeFragment extends BaseFragment implements RxView<Home> {
+public class HomeFragment extends BaseFragment implements HomeLogicI.HomeView {
 
-    @Bind(R.id.recycler_view_home)
+    //    @Bind(R.id.recycler_view_home)
     XRecyclerView mRecylerView;
     private List<Home.SectionListBean.ItemListBean> home_list = new ArrayList();
     private RecyclerAdapter adapter;
@@ -44,10 +38,9 @@ public class HomeFragment extends BaseFragment implements RxView<Home> {
     }
 
     @Override
-    protected void onInitView() {
-        mPresenter = getLogicImpl(HomeLogicI.class, this);
+    protected void onInitView(Bundle savedInstanceState) {
+        mRecylerView = (XRecyclerView) getActivity().findViewById(R.id.recycler_view_home);
         ((HomeLogicImpl) mPresenter).onHomeDataLayer2Api();
-
         adapter = new RecyclerAdapter<Home.SectionListBean.ItemListBean>(getActivity(), R.layout.item_content_home, home_list) {
             @Override
             public void convert(RecyclerViewHolder holder, Home.SectionListBean.ItemListBean repo) {
@@ -67,10 +60,10 @@ public class HomeFragment extends BaseFragment implements RxView<Home> {
                 } else {
                     minute = String.valueOf(mm);//分钟
                 }
-                holder.setText(R.id.tv_category, "#"+repo.getData().getCategory()+"  /  "  + minute + "' " + second + '"');
-                ImageLoaderUtil.getInstance().loadImage(getActivity(), new ImageLoader.Builder()
-                        .url(repo.getData().getCover().getDetail())
-                        .imgView((ImageView) holder.getView(R.id.iv_home_img))
+                holder.setText(R.id.tv_category, "#" + repo.getData().getCategory() + "  /  " + minute + "' " + second + '"');
+                ImageLoadTool.getInstance().load(getActivity(), new ImageLoader.Builder()
+                        .load(repo.getData().getCover().getDetail())
+                        .into((ImageView) holder.getView(R.id.iv_home_img))
                         .placeHolder(R.color.image_place_normal)
                         .build());
             }
@@ -80,23 +73,14 @@ public class HomeFragment extends BaseFragment implements RxView<Home> {
     }
 
     @Override
-    public void onReceiveData2Api(Home repo, boolean b) {
-        List<Home.SectionListBean.ItemListBean> sectionList = repo.getSectionList().get(0).getItemList();
-        home_list.addAll(sectionList);
+    protected Class getLogic() {
+        return HomeLogicI.class;
+    }
+
+    @Override
+    public void success(Home body) {
+        List<Home.SectionListBean.ItemListBean> list = body.getSectionList().get(0).getItemList();
+        home_list.addAll(list);
         adapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        ButterKnife.bind(this, rootView);
-        return rootView;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        ButterKnife.unbind(this);
     }
 }

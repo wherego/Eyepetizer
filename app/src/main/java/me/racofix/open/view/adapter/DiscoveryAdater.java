@@ -5,8 +5,8 @@ import android.widget.ImageView;
 
 import com.android.core.adapter.RecyclerAdapter;
 import com.android.core.adapter.RecyclerViewHolder;
-import com.android.core.widget.glide.ImageLoader;
-import com.android.core.widget.glide.ImageLoaderUtil;
+import com.android.core.manage.image.ImageLoadTool;
+import com.android.core.manage.image.ImageLoader;
 
 import java.util.List;
 
@@ -26,9 +26,9 @@ public class DiscoveryAdater extends RecyclerAdapter<Discovery.ItemListBean> {
     @Override
     public void convert(RecyclerViewHolder var1, Discovery.ItemListBean item) {
 
-        ImageLoaderUtil.getInstance().loadImage(mContext, new ImageLoader.Builder()
-                .url(item.getData().getImage())
-                .imgView((ImageView) var1.getView(R.id.iv_disconvery_img))
+        ImageLoadTool.getInstance().load(mContext, new ImageLoader.Builder()
+                .load(item.getData().getImage())
+                .into((ImageView) var1.getView(R.id.iv_disconvery_img))
                 .placeHolder(R.color.image_place_normal)
                 .build());
 

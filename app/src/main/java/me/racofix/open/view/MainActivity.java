@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.android.core.widget.TabStripView;
+import com.android.core.ui.TabStripView;
 
 import me.racofix.open.R;
 import me.racofix.open.view.fragment.DiscoveryFragment;

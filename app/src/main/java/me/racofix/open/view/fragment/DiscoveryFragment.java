@@ -1,5 +1,6 @@
 package me.racofix.open.view.fragment;
 
+import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 
 import com.android.core.adapter.RecyclerAdapter;
@@ -22,7 +23,7 @@ import me.racofix.open.view.adapter.DiscoveryAdater;
  * Date: 2016/9/18
  * Github: https://github.com/racofix
  */
-public class DiscoveryFragment extends BaseFragment implements RxView<Discovery>, XRecyclerView.LoadingListener {
+public class DiscoveryFragment extends BaseFragment implements DiscoveryLogicI.DiscoveryView {
 
     @Bind(R.id.category_recyler_view)
     XRecyclerView mCategoryListView;
@@ -36,28 +37,24 @@ public class DiscoveryFragment extends BaseFragment implements RxView<Discovery>
     }
 
     @Override
-    protected void onInitView() {
-
-        mPresenter = getLogicImpl(DiscoveryLogicI.class, this);
-
+    protected void onInitView(Bundle savedInstanceState) {
         GridLayoutManager manager = new GridLayoutManager(getActivity(), 2);
         mCategoryListView.setLayoutManager(manager);
-        mCategoryListView.setRefreshProgressStyle(22);
-//        mCategoryListView.setLoadingMoreProgressStyle(7);
-        mCategoryListView.setArrowImageView(com.android.core.R.drawable.abc_icon_down_arrow);
-        mCategoryListView.setLoadingListener(this);
-        mCategoryListView.setLoadingMoreEnabled(false);
-
         mAdapter = new DiscoveryAdater(getActivity(), R.layout.item_content_discovery, category_data_list);
         mCategoryListView.setAdapter(mAdapter);
 
-        onRefresh();
+        ((DiscoveryLogicImpl) mPresenter).onCategoryDataLayer2Api();
     }
 
     @Override
-    public void onReceiveData2Api(Discovery category, boolean b) {
+    protected Class getLogic() {
+        return DiscoveryLogicI.class;
+    }
+
+    @Override
+    public void successFul(Discovery body) {
         mCategoryListView.refreshComplete();
-        List<Discovery.ItemListBean> list = category.getItemList();
+        List<Discovery.ItemListBean> list = body.getItemList();
         category_data_list.clear();
         for (int i = 0; i < list.size(); i++) {
             Discovery.ItemListBean adv = list.get(0);
@@ -67,15 +64,5 @@ public class DiscoveryFragment extends BaseFragment implements RxView<Discovery>
             }
         }
         mAdapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void onRefresh() {
-        ((DiscoveryLogicImpl) mPresenter).onCategoryDataLayer2Api();
-    }
-
-    @Override
-    public void onLoadMore() {
-
     }
 }
