@@ -3,10 +3,8 @@ package me.racofix.open.view.fragment;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 
-import com.android.core.adapter.RecyclerAdapter;
-import com.android.core.base.BaseFragment;
-import com.android.core.base.rx.RxView;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
+import com.meikoz.core.base.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +13,6 @@ import butterknife.Bind;
 import me.racofix.open.R;
 import me.racofix.open.model.Discovery;
 import me.racofix.open.presenter.DiscoveryLogicI;
-import me.racofix.open.presenter.DiscoveryLogicImpl;
-import me.racofix.open.view.adapter.DiscoveryAdater;
 
 /**
  * Author: 码农小阿新
@@ -29,7 +25,6 @@ public class DiscoveryFragment extends BaseFragment implements DiscoveryLogicI.D
     XRecyclerView mCategoryListView;
 
     List<Discovery.ItemListBean> category_data_list = new ArrayList();
-    private RecyclerAdapter mAdapter;
 
     @Override
     protected int getLayoutResource() {
@@ -40,14 +35,10 @@ public class DiscoveryFragment extends BaseFragment implements DiscoveryLogicI.D
     protected void onInitView(Bundle savedInstanceState) {
         GridLayoutManager manager = new GridLayoutManager(getActivity(), 2);
         mCategoryListView.setLayoutManager(manager);
-        mAdapter = new DiscoveryAdater(getActivity(), R.layout.item_content_discovery, category_data_list);
-        mCategoryListView.setAdapter(mAdapter);
-
-        ((DiscoveryLogicImpl) mPresenter).onCategoryDataLayer2Api();
     }
 
     @Override
-    protected Class getLogic() {
+    protected Class getLogicClazz() {
         return DiscoveryLogicI.class;
     }
 
@@ -63,6 +54,5 @@ public class DiscoveryFragment extends BaseFragment implements DiscoveryLogicI.D
                 category_data_list.add(list.get(i));
             }
         }
-        mAdapter.notifyDataSetChanged();
     }
 }

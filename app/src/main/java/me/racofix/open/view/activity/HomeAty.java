@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +11,7 @@ import java.util.List;
 import me.racofix.open.R;
 import me.racofix.open.api.Api;
 import me.racofix.open.model.Home;
+import me.racofix.open.view.adapter.HomeRecylerAdapter;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -22,7 +22,7 @@ import retrofit2.Response;
  * @GitHub: https://github.com/meikoz
  */
 
-public class HomeActivity extends Activity {
+public class HomeAty extends Activity {
 
     private RecyclerView mHomeRecycler;
     private List<Home.SectionListBean> mDatas = new ArrayList<>();

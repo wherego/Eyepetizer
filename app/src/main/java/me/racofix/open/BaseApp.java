@@ -1,7 +1,8 @@
 package me.racofix.open;
 
-import com.android.core.MainApplication;
-import com.android.core.manage.log.Logger;
+import com.meikoz.core.MainApplication;
+import com.meikoz.core.api.RestApi;
+import com.meikoz.core.manage.log.Logger;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
@@ -16,7 +17,7 @@ public class BaseApp extends MainApplication {
 
         if (BuildConfig.DEBUG)
             Logger.init(getPackageName()).hideThreadInfo().methodCount(3);
-
+        RestApi.getInstance().init(true);
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
                 .setDefaultFontPath("fonts/FZSongKeBenXiuKaiS-R-GB.TTF")
                 .setFontAttrId(R.attr.fontPath)

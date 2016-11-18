@@ -10,14 +10,13 @@ import butterknife.Bind;
 import me.racofix.open.R;
 import me.racofix.open.utils.StatusBarUtil;
 import me.racofix.open.view.AbsBaseActivity;
-import me.racofix.open.view.MainActivity;
 
 /**
  * Author: 码农小阿新
  * Date: 2016/9/23
  * Github: https://github.com/racofix
  */
-public class SplashActivity extends AbsBaseActivity {
+public class SplashAty extends AbsBaseActivity {
 
     private int mLoadTime = 2000;
     @Bind(R.id.iv_splash_background)
@@ -35,7 +34,7 @@ public class SplashActivity extends AbsBaseActivity {
     }
 
     @Override
-    protected Class getLogic() {
+    protected Class getLogicClazz() {
         return null;
     }
 
@@ -49,7 +48,7 @@ public class SplashActivity extends AbsBaseActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                MainActivity.jumpTo(SplashActivity.this);
+                MainAty.jumpTo(SplashAty.this);
             }
         }, mLoadTime);
     }

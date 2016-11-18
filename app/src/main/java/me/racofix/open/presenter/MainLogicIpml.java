@@ -1,8 +1,5 @@
 package me.racofix.open.presenter;
-
-import com.android.core.base.BasePresenter;
-
-
+import com.meikoz.core.base.BasePresenter;
 
 /**
  * Created by zjl on 16-9-12.

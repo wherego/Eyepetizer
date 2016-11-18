@@ -1,9 +1,6 @@
 package me.racofix.open.presenter;
 
-import com.android.core.base.BasePresenter;
-import com.android.core.base.rx.ApiCallback;
-import com.android.core.base.rx.SubscriberCallBack;
-
+import com.meikoz.core.base.BasePresenter;
 import me.racofix.open.api.Api;
 import me.racofix.open.model.Discovery;
 import retrofit2.Call;

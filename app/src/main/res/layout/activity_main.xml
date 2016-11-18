@@ -17,7 +17,7 @@
         android:background="#dedede"
         android:paddingBottom="@dimen/tab_bar_height"/>
 
-    <com.android.core.ui.TabStripView
+    <com.meikoz.core.ui.TabStripView
         android:id="@+id/navigateTabBar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/tab_bar_height"

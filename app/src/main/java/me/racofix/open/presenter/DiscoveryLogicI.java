@@ -1,8 +1,8 @@
 package me.racofix.open.presenter;
 
 
-import com.android.core.base.BaseView;
-import com.android.core.model.annotation.Implement;
+import com.meikoz.core.base.BaseView;
+import com.meikoz.core.model.annotation.Implement;
 
 import me.racofix.open.model.Discovery;
 

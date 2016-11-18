@@ -1,4 +1,4 @@
-package me.racofix.open.view;
+package me.racofix.open.view.activity;
 
 import android.app.Activity;
 import android.content.Context;
@@ -6,17 +6,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.android.core.ui.TabStripView;
-
+import com.meikoz.core.ui.TabStripView;
 import me.racofix.open.R;
+import me.racofix.open.model.Home;
 import me.racofix.open.view.fragment.DiscoveryFragment;
 import me.racofix.open.view.fragment.HomeFragment;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class MainActivity extends AppCompatActivity {
+public class MainAty extends AppCompatActivity {
 
     public static void jumpTo(Activity target) {
-        Intent intent = new Intent(target, MainActivity.class);
+        Intent intent = new Intent(target, MainAty.class);
         target.startActivity(intent);
         target.finish();
     }
@@ -40,11 +40,11 @@ public class MainActivity extends AppCompatActivity {
                 new TabStripView.TabParam(R.drawable.ic_tab_strip_icon_category,
                         R.drawable.ic_tab_strip_icon_category_selected, R.string.tab_bar_text_category));
 
-        navigateTabBar.addTab(HomeFragment.class,
+        navigateTabBar.addTab(DiscoveryFragment.class,
                 new TabStripView.TabParam(R.drawable.ic_tab_strip_icon_pgc,
                         R.drawable.ic_tab_strip_icon_pgc_selected, R.string.tab_bar_text_pgc));
 
-        navigateTabBar.addTab(HomeFragment.class,
+        navigateTabBar.addTab(DiscoveryFragment.class,
                 new TabStripView.TabParam(R.drawable.ic_tab_strip_icon_profile,
                         R.drawable.ic_tab_strip_icon_profile_selected, R.string.tab_bar_text_profile));
     }

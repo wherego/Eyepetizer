@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.widget.ImageView;
 
-import com.android.core.adapter.RecyclerAdapter;
-import com.android.core.adapter.RecyclerViewHolder;
-import com.android.core.base.BaseFragment;
-import com.android.core.manage.image.ImageLoadTool;
-import com.android.core.manage.image.ImageLoader;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
+import com.meikoz.core.adapter.RecyclerAdapter;
+import com.meikoz.core.adapter.RecyclerViewHolder;
+import com.meikoz.core.base.BaseFragment;
+import com.meikoz.core.manage.image.ImageLoadTool;
+import com.meikoz.core.manage.image.ImageLoader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +27,7 @@ import me.racofix.open.presenter.HomeLogicImpl;
  */
 public class HomeFragment extends BaseFragment implements HomeLogicI.HomeView {
 
-    //    @Bind(R.id.recycler_view_home)
+    @Bind(R.id.recycler_view_home)
     XRecyclerView mRecylerView;
     private List<Home.SectionListBean.ItemListBean> home_list = new ArrayList();
     private RecyclerAdapter adapter;
@@ -38,9 +38,13 @@ public class HomeFragment extends BaseFragment implements HomeLogicI.HomeView {
     }
 
     @Override
-    protected void onInitView(Bundle savedInstanceState) {
-        mRecylerView = (XRecyclerView) getActivity().findViewById(R.id.recycler_view_home);
+    protected void onInitData2Api() {
+        super.onInitData2Api();
         ((HomeLogicImpl) mPresenter).onHomeDataLayer2Api();
+    }
+
+    @Override
+    protected void onInitView(Bundle savedInstanceState) {
         adapter = new RecyclerAdapter<Home.SectionListBean.ItemListBean>(getActivity(), R.layout.item_content_home, home_list) {
             @Override
             public void convert(RecyclerViewHolder holder, Home.SectionListBean.ItemListBean repo) {
@@ -61,11 +65,11 @@ public class HomeFragment extends BaseFragment implements HomeLogicI.HomeView {
                     minute = String.valueOf(mm);//分钟
                 }
                 holder.setText(R.id.tv_category, "#" + repo.getData().getCategory() + "  /  " + minute + "' " + second + '"');
-                ImageLoadTool.getInstance().load(getActivity(), new ImageLoader.Builder()
-                        .load(repo.getData().getCover().getDetail())
-                        .into((ImageView) holder.getView(R.id.iv_home_img))
-                        .placeHolder(R.color.image_place_normal)
-                        .build());
+//                ImageLoadTool.getInstance().load(getActivity(), new ImageLoader.Builder()
+//                        .load(repo.getData().getCover().getDetail())
+//                        .into((ImageView) holder.getView(R.id.iv_home_img))
+//                        .placeHolder(R.color.image_place_normal)
+//                        .build());
             }
         };
         mRecylerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -73,7 +77,7 @@ public class HomeFragment extends BaseFragment implements HomeLogicI.HomeView {
     }
 
     @Override
-    protected Class getLogic() {
+    protected Class getLogicClazz() {
         return HomeLogicI.class;
     }
 

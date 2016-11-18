@@ -1,6 +1,6 @@
 package me.racofix.open.presenter;
 
-import com.android.core.base.BasePresenter;
+import com.meikoz.core.base.BasePresenter;
 
 import me.racofix.open.api.Api;
 import me.racofix.open.model.Home;
