@@ -1,9 +1,9 @@
 package me.racofix.open.view.fragment;
 
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
-import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.meikoz.core.base.BaseFragment;
 
 import java.util.ArrayList;
@@ -11,8 +11,11 @@ import java.util.List;
 
 import butterknife.Bind;
 import me.racofix.open.R;
-import me.racofix.open.model.Discovery;
+import me.racofix.open.model.HomeBean;
+import me.racofix.open.model.SectionBean;
 import me.racofix.open.presenter.DiscoveryLogicI;
+import me.racofix.open.presenter.DiscoveryLogicImpl;
+import me.racofix.open.view.adapter.HomeRecylerAdapter;
 
 /**
  * Author: 码农小阿新
@@ -21,20 +24,28 @@ import me.racofix.open.presenter.DiscoveryLogicI;
  */
 public class DiscoveryFragment extends BaseFragment implements DiscoveryLogicI.DiscoveryView {
 
-    @Bind(R.id.category_recyler_view)
-    XRecyclerView mCategoryListView;
+    @Bind(R.id.category_recycler_view)
+    RecyclerView mCategoryRecyclerView;
 
-    List<Discovery.ItemListBean> category_data_list = new ArrayList();
+    private List<SectionBean> mSectionList = new ArrayList<>();
+    private HomeRecylerAdapter mHomeAdapter;
 
     @Override
     protected int getLayoutResource() {
-        return R.layout.fragment_category;
+        return R.layout.fragment_discovery;
     }
 
     @Override
     protected void onInitView(Bundle savedInstanceState) {
-        GridLayoutManager manager = new GridLayoutManager(getActivity(), 2);
-        mCategoryListView.setLayoutManager(manager);
+        mHomeAdapter = new HomeRecylerAdapter(getActivity(), mSectionList);
+        mCategoryRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mCategoryRecyclerView.setAdapter(mHomeAdapter);
+    }
+
+    @Override
+    protected void onInitData2Api() {
+        super.onInitData2Api();
+        ((DiscoveryLogicImpl) mPresenter).onLoadHomeData2Remote();
     }
 
     @Override
@@ -43,16 +54,12 @@ public class DiscoveryFragment extends BaseFragment implements DiscoveryLogicI.D
     }
 
     @Override
-    public void successFul(Discovery body) {
-        mCategoryListView.refreshComplete();
-        List<Discovery.ItemListBean> list = body.getItemList();
-        category_data_list.clear();
-        for (int i = 0; i < list.size(); i++) {
-            Discovery.ItemListBean adv = list.get(0);
-            if (i >= 4) {
-                // remove list 4
-                category_data_list.add(list.get(i));
-            }
+    public void onResponse(HomeBean body) {
+        if (body != null) {
+            mSectionList.clear();
+            List<SectionBean> list = body.getSectionList();
+            mSectionList.addAll(list);
+            mHomeAdapter.notifyDataSetChanged();
         }
     }
 }

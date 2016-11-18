@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.meikoz.core.adapter.RecyclerAdapter;
 import com.meikoz.core.adapter.RecyclerViewHolder;
@@ -65,11 +66,8 @@ public class HomeFragment extends BaseFragment implements HomeLogicI.HomeView {
                     minute = String.valueOf(mm);//分钟
                 }
                 holder.setText(R.id.tv_category, "#" + repo.getData().getCategory() + "  /  " + minute + "' " + second + '"');
-//                ImageLoadTool.getInstance().load(getActivity(), new ImageLoader.Builder()
-//                        .load(repo.getData().getCover().getDetail())
-//                        .into((ImageView) holder.getView(R.id.iv_home_img))
-//                        .placeHolder(R.color.image_place_normal)
-//                        .build());
+                Glide.with(getActivity()).load(repo.getData().getCover().getDetail())
+                        .into((ImageView) holder.getView(R.id.iv_home_img));
             }
         };
         mRecylerView.setLayoutManager(new LinearLayoutManager(getActivity()));

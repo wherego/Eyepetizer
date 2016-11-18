@@ -6,11 +6,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.meikoz.core.manage.ScreenUtil;
 
 import java.util.List;
 
 import me.racofix.open.R;
-import me.racofix.open.model.Home;
+import me.racofix.open.model.SectionBean;
 
 /**
  * @User: 蜡笔小新
@@ -20,19 +23,12 @@ import me.racofix.open.model.Home;
 
 public class HomeRecylerAdapter extends RecyclerView.Adapter<HomeRecylerAdapter.ViewHolder> {
 
-    public static final int VERTICAL = 0;
-    public static final int HORIZONTAL = 2;
-    private List<Home.SectionListBean> mHomeLists;
+    private List<SectionBean> mSectionList;
     private Context mContext;
 
-    public HomeRecylerAdapter(Context context, List<Home.SectionListBean> mHomeLists) {
+    public HomeRecylerAdapter(Context context, List<SectionBean> sectionList) {
         this.mContext = context;
-        this.mHomeLists = mHomeLists;
-    }
-
-    @Override
-    public int getItemViewType(int position) {
-        return position == VERTICAL ? VERTICAL : HORIZONTAL;
+        this.mSectionList = sectionList;
     }
 
     @Override
@@ -43,27 +39,37 @@ public class HomeRecylerAdapter extends RecyclerView.Adapter<HomeRecylerAdapter.
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        if (position == VERTICAL) {
-            holder.recyclerView.setLayoutManager(new LinearLayoutManager(holder
-                    .recyclerView.getContext(), LinearLayoutManager.VERTICAL, false));
-        } else if (position == HORIZONTAL){
-            holder.recyclerView.setLayoutManager(new LinearLayoutManager(holder
-                    .recyclerView.getContext(), LinearLayoutManager.HORIZONTAL, false));
-        }
-        holder.recyclerView.setAdapter(new Adapter(mContext, position, mHomeLists));
+        List<SectionBean.ItemListBean> itemList = mSectionList.get(position).getItemList();
+        LinearLayoutManager manager = new LinearLayoutManager(mContext);
+        ItemSectionAdapter adapter = new ItemSectionAdapter(mContext,
+                R.layout.item_content_home,
+                itemList);
+        holder.onMeasureChildHeight(mContext, itemList.size(), manager, adapter);
+        holder.mFootView.setText(mSectionList.get(position).getFooter().getType());
     }
 
     @Override
     public int getItemCount() {
-        return 3;
+        return mSectionList.size();
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        public RecyclerView recyclerView;
+        RecyclerView mItemListView;
+        private final TextView mFootView;
 
-        public ViewHolder(View rootView) {
+        ViewHolder(View rootView) {
             super(rootView);
-            recyclerView = (RecyclerView) itemView.findViewById(R.id.recyclerView);
+            mItemListView = (RecyclerView) itemView.findViewById(R.id.itemView);
+            mFootView = (TextView) itemView.findViewById(R.id.footView);
+        }
+
+        public void onMeasureChildHeight(Context ctx, int size, LinearLayoutManager manager, ItemSectionAdapter adapter) {
+            ViewGroup.LayoutParams layoutParams = mItemListView.getLayoutParams();
+            //高度等于＝条目的高度＋ 10dp的间距 ＋ 10dp（为了让条目居中）
+            layoutParams.height = ScreenUtil.dp2px(ctx, 200) * size;
+            mItemListView.setLayoutParams(layoutParams);
+            mItemListView.setLayoutManager(manager);
+            mItemListView.setAdapter(adapter);
         }
     }
 }

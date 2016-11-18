@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.meikoz.core.ui.TabStripView;
 import me.racofix.open.R;
-import me.racofix.open.model.Home;
 import me.racofix.open.view.fragment.DiscoveryFragment;
 import me.racofix.open.view.fragment.HomeFragment;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;

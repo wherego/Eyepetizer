@@ -1,5 +1,6 @@
 package me.racofix.open.api;
 
+import me.racofix.open.model.HomeBean;
 import retrofit2.Call;
 import retrofit2.http.GET;
 
@@ -19,8 +20,10 @@ public interface ApiService {
     Call<Home> onHomeDataStore2Api();
 
     // 发现
-    @GET("v3/discovery")
-    Call<Discovery> onCategoryData2Api();
-
+    @GET("v3/tabs/selected")
+    Call<HomeBean> onCategoryData2Api();
+//    // 发现
+//    @GET("v3/discovery")
+//    Call<HomeBean> onCategoryData2Api();
 
 }

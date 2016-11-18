@@ -5,6 +5,7 @@ import com.meikoz.core.base.BaseView;
 import com.meikoz.core.model.annotation.Implement;
 
 import me.racofix.open.model.Discovery;
+import me.racofix.open.model.HomeBean;
 
 /**
  * Author: 码农小阿新
@@ -13,9 +14,9 @@ import me.racofix.open.model.Discovery;
  */
 @Implement(DiscoveryLogicImpl.class)
 public interface DiscoveryLogicI {
-    void onCategoryDataLayer2Api();
+    void onLoadHomeData2Remote();
 
     interface DiscoveryView extends BaseView {
-        void successFul(Discovery body);
+        void onResponse(HomeBean body);
     }
 }
