@@ -28,8 +28,12 @@ public class ItemSectionAdapter extends RecyclerAdapter<SectionBean.ItemListBean
     @Override
     public void convert(RecyclerViewHolder hepler, SectionBean.ItemListBean bean) {
         hepler.setText(R.id.tv_home_title, bean.getData().getTitle());
-//        if (!TextUtils.isEmpty(bean.getData().getCover().getDetail()))
+        if (bean.getData() != null && bean.getData().getCover() != null) {
+            Glide.with(mContext).load(bean.getData().getCover().getDetail())
+                    .into((ImageView) hepler.getView(R.id.iv_home_img));
+        } else {
             Glide.with(mContext).load("http://img.kaiyanapp.com/4567faf24c0509b287a9b8d626134095.jpeg?imageMogr2/quality/60")
                     .into((ImageView) hepler.getView(R.id.iv_home_img));
+        }
     }
 }
