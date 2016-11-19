@@ -41,11 +41,11 @@ public class HomeRecylerAdapter extends RecyclerView.Adapter<HomeRecylerAdapter.
     public void onBindViewHolder(ViewHolder holder, int position) {
         List<SectionBean.ItemListBean> itemList = mSectionList.get(position).getItemList();
         LinearLayoutManager manager = new LinearLayoutManager(mContext);
+        LinearLayoutManager verticalManager = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
         ItemSectionAdapter adapter = new ItemSectionAdapter(mContext,
                 R.layout.item_content_home,
-                itemList);
-        holder.onMeasureChildHeight(mContext, itemList.size(), manager, adapter);
-        holder.mFootView.setText(mSectionList.get(position).getFooter().getType());
+                position == 0 ? itemList : itemList.get(0).getData().getItemList());
+        holder.onMeasureChildHeight(mContext, itemList.size(), position == 0 ? manager : verticalManager, adapter);
     }
 
     @Override
@@ -55,12 +55,10 @@ public class HomeRecylerAdapter extends RecyclerView.Adapter<HomeRecylerAdapter.
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         RecyclerView mItemListView;
-        private final TextView mFootView;
 
         ViewHolder(View rootView) {
             super(rootView);
             mItemListView = (RecyclerView) itemView.findViewById(R.id.itemView);
-            mFootView = (TextView) itemView.findViewById(R.id.footView);
         }
 
         public void onMeasureChildHeight(Context ctx, int size, LinearLayoutManager manager, ItemSectionAdapter adapter) {

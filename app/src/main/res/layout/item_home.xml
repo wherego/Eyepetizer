@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:orientation="vertical">
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/itemView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorAccent"/>
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/footView"
@@ -16,5 +10,10 @@
         android:layout_height="50dp"
         android:background="@color/abc_white"
         android:gravity="center"
-        android:text="我是footview"/>
+        android:text="我是headerview" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/itemView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

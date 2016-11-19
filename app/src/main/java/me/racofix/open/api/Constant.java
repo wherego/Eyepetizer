@@ -5,7 +5,21 @@ package me.racofix.open.api;
  */
 public class Constant {
 
+//Android api
+//首页
+//http://baobab.kaiyanapp.com/api/v3/tabs/selected?udid=3aab4c0bab4d49f4ba4ebc3399f1a5493a38f77b&vc=144&vn=2.9.3&deviceModel=Nexus%205&first_channel=eyepetizer_360_market&last_channel=eyepetizer_360_market&system_version_code=21
+//消息
+//http://baobab.kaiyanapp.com/api/v3/messages?udid=3aab4c0bab4d49f4ba4ebc3399f1a5493a38f77b&vc=144&vn=2.9.3&deviceModel=Nexus%205&first_channel=eyepetizer_360_market&last_channel=eyepetizer_360_market&system_version_code=21
+//发现
+//    http://baobab.kaiyanapp.com/api/v3/discovery?udid=3aab4c0bab4d49f4ba4ebc3399f1a5493a38f77b&vc=144&vn=2.9.3&deviceModel=Nexus%205&first_channel=eyepetizer_360_market&last_channel=eyepetizer_360_market&system_version_code=21
+    //sousuo
+//    http://baobab.kaiyanapp.com/api/v3/queries/hot?udid=3aab4c0bab4d49f4ba4ebc3399f1a5493a38f77b&vc=144&vn=2.9.3&deviceModel=Nexus%205&first_channel=eyepetizer_360_market&last_channel=eyepetizer_360_market&system_version_code=21
+    //zuozhe
+//    http://baobab.kaiyanapp.com/api/v3/tabs/pgcs?udid=3aab4c0bab4d49f4ba4ebc3399f1a5493a38f77b&vc=144&vn=2.9.3&deviceModel=Nexus%205&first_channel=eyepetizer_360_market&last_channel=eyepetizer_360_market&system_version_code=21
 
+
+
+    /***********************************************************************************************/
 //    首页:
 //    http://baobab.wandoujia.com/api/v3/tabs/selected?
 //    udid=3aab4c0bab4d49f4ba4ebc3399f1a5493a38f77b&vc=126&vn=2.4.1&

@@ -253,6 +253,26 @@ public class SectionBean {
             private Object label;
             private boolean collected;
             private boolean played;
+            //二级类别
+            private List<ItemListBean> itemList;
+            private HeaderBean header;
+
+            public HeaderBean getHeader() {
+                return header;
+            }
+
+            public void setHeader(HeaderBean header) {
+                this.header = header;
+            }
+
+            public List<ItemListBean> getItemList() {
+                return itemList;
+            }
+
+            public void setItemList(List<ItemListBean> itemList) {
+                this.itemList = itemList;
+            }
+
             /**
              * height : 720
              * width : 1280
@@ -493,6 +513,54 @@ public class SectionBean {
 
             public void setTags(List<TagsBean> tags) {
                 this.tags = tags;
+            }
+
+            public static class HeaderBean {
+                public int getId() {
+                    return id;
+                }
+
+                public void setId(int id) {
+                    this.id = id;
+                }
+
+                public String getTitle() {
+                    return title;
+                }
+
+                public void setTitle(String title) {
+                    this.title = title;
+                }
+
+                public String getFont() {
+                    return font;
+                }
+
+                public void setFont(String font) {
+                    this.font = font;
+                }
+
+                public String getCover() {
+                    return cover;
+                }
+
+                public void setCover(String cover) {
+                    this.cover = cover;
+                }
+
+                public String getActionUrl() {
+                    return actionUrl;
+                }
+
+                public void setActionUrl(String actionUrl) {
+                    this.actionUrl = actionUrl;
+                }
+
+                private int id;
+                private String title;
+                private String font;
+                private String cover;
+                private String actionUrl;
             }
 
             public static class ProviderBean {
