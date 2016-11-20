@@ -4,10 +4,6 @@ import me.racofix.open.model.HomeBean;
 import retrofit2.Call;
 import retrofit2.http.GET;
 
-import me.racofix.open.model.Discovery;
-import me.racofix.open.model.Home;
-import rx.Observable;
-
 /**
  * Created by zjl on 16-9-12.
  */
@@ -17,7 +13,7 @@ public interface ApiService {
 
     // 每日精选
     @GET("v3/tabs/selected")
-    Call<Home> onHomeDataStore2Api();
+    Call<HomeBean> onHomeDataStore2Api();
 
     // 发现
     @GET("v3/tabs/selected" + defaultUrl)

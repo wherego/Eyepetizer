@@ -19,9 +19,9 @@ import me.racofix.open.model.SectionBean;
  * @GitHub: https://github.com/meikoz
  */
 
-public class ItemSectionAdapter extends RecyclerAdapter<SectionBean.ItemListBean> {
+public class VerticalHomeAdapter extends RecyclerAdapter<SectionBean.ItemListBean> {
 
-    public ItemSectionAdapter(Context context, int layoutId, List<SectionBean.ItemListBean> datas) {
+    public VerticalHomeAdapter(Context context, int layoutId, List<SectionBean.ItemListBean> datas) {
         super(context, layoutId, datas);
     }
 

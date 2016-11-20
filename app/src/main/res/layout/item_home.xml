@@ -4,13 +4,12 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/footView"
+    <ImageView
+        android:id="@+id/image_header_view"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/abc_white"
-        android:gravity="center"
-        android:text="我是headerview" />
+        android:layout_height="230dp"
+        android:background="@color/abc_theme_black_7f"
+        android:scaleType="centerCrop" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/itemView"
