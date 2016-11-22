@@ -33,11 +33,6 @@ public class SplashAty extends AbsBaseActivity {
         sacleLargenView();
     }
 
-    @Override
-    protected Class getLogicClazz() {
-        return null;
-    }
-
     private void sacleLargenView() {
         Glide.with(this)
                 .load(R.drawable.landing_background)

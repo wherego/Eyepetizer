@@ -43,8 +43,8 @@ public class DiscoveryFragment extends BaseFragment implements DiscoveryLogicI.D
     }
 
     @Override
-    protected void onInitData2Api() {
-        super.onInitData2Api();
+    protected void onInitData2Remote() {
+        super.onInitData2Remote();
         ((DiscoveryLogicImpl) mPresenter).onLoadHomeData2Remote();
     }
 
